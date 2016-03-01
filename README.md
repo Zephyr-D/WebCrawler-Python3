@@ -29,13 +29,11 @@ Finally, this repository is under the MIT License. Hope you like it!
 Update Info
 ---------------------------------------------------------
 
-(* for new uploads)
-
 ---------------------------------------------------------
 
 VERSION
 
-1.0*
+1.0
 
 DATE
 
@@ -43,15 +41,11 @@ DATE
 
 DOCUMENT
 
-README, 
-WC_Tieba.py*, 
-WC_Tieba_Info.txt*
+README, WC_Tieba.py, WC_Tieba_Info.txt
 
 INSTRUCTION
 
-A fresh, new and official README is now standing by! 
-WC_Tieba.py is uploaded as the first code, which can enable you to download '.jpg' images from a specific thread (from the first page to the last page). 
-WC_Tieba_Info.txt is its advisory document to give a detailed explanation to its information and usage.
+A fresh, new and official README is now standing by! WC_Tieba.py is uploaded as the first code, which can enable you to download '.jpg' images from a specific thread (from the first page to the last page). WC_Tieba_Info.txt is its advisory document to give a detailed explanation to its information and usage.
 
 ---------------------------------------------------------
 
