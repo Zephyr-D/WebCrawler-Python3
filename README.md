@@ -4,8 +4,11 @@ Statement
 ---------------------------------------------------------
 
 Web Crawler (for fun) under Python 3 
+
 By Zephyr-D
-Created: 2016/3/1
+
+Created: 2016/2/28
+
 Latest Update: 2016/3/1
 
 
@@ -25,12 +28,18 @@ Finally, this repository is under the MIT License. Hope you like it!
 ---------------------------------------------------------
 Update Info
 ---------------------------------------------------------
+
 (* for new upload)
 
 VERSION     | 1.0*
+
 DATE        | 2016/3/1
+
 DOCUMENT    | README, WC_Tieba.py*
-INSTRUCTION | The fresh first README is now standing by! WC_Tieba.py is uploaded as the first code, which can enable you to download '.jpg' images from a specific thread (from the first page to the last page). WC_Tieba_Info.txt is its advisory document to give a detailed explanation to its usage and .
+
+INSTRUCTION | The fresh first README is now standing by! WC_Tieba.py is uploaded as the first code, which can enable you to download '.jpg' images from a specific thread (from the first page to the last page). WC_Tieba_Info.txt is its advisory document to give a detailed explanation to its information and usage.
+
+
 
 
 
