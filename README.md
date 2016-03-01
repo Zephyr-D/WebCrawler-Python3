@@ -33,21 +33,13 @@ VERSION | DATE | DOCUMENT | INSTRUCTION
 
 ---------------------------------------------------------
 
-VERSION
+VERSION: 1.0
 
-1.0
+DATE: 2016/3/1
 
-DATE
+DOCUMENT: README, WC_Tieba.py, WC_Tieba_Info.txt
 
-2016/3/1
-
-DOCUMENT
-
-README, WC_Tieba.py, WC_Tieba_Info.txt
-
-INSTRUCTION
-
-A fresh, new and official README is now standing by! WC_Tieba.py is uploaded as the first code, which can enable you to download '.jpg' images from a specific thread (from the first page to the last page). WC_Tieba_Info.txt is its advisory document to give a detailed explanation to its information and usage.
+INSTRUCTION: A fresh, new and official README is now standing by! WC_Tieba.py is uploaded as the first code, which can enable you to download '.jpg' images from a specific thread (from the first page to the last page). WC_Tieba_Info.txt is its advisory document to give a detailed explanation to its information and usage.
 
 ---------------------------------------------------------
 
