@@ -29,6 +29,8 @@ Finally, this repository is under the MIT License. Hope you like it!
 Update Info
 ---------------------------------------------------------
 
+VERSION | DATE | DOCUMENT | INSTRUCTION
+
 ---------------------------------------------------------
 
 VERSION
