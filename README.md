@@ -29,13 +29,13 @@ Fnally, this repository is under the MIT License. Hope you like it. Have fun!
 Catalogue
 ---------------------------------------------------------
 
-LICENSE: MIT License.
+LICENSE: MIT License
 
-README.md: Just read me!
+README.md: just read me
 
-WC_Tieba.py: Web crawler for Baidu Tieba to download images.
+WC_Tieba.py: web crawler for Baidu Tieba to download images
 
-WC_Tieba_Info.txt: Supporting document for WC_Tieba.py (in Chinese).
+WC_Tieba_Info.txt: supporting document for WC_Tieba.py (in Chinese)
 
 
 
