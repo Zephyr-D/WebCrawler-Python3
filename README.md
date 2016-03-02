@@ -21,7 +21,7 @@ This is a repository for basic (or simple) web crawlers under Python 3, initiall
 
 You will be able to find articles or blogs related to these codes as I'll either upload them to this repository or give the link to them in this README, also in the future. If you do not find the specific crawler for your intended website, try the one sharing most similarities and do a few changes by yourself! If you can't work it out, let me know and make it to others for help, we will update for you as soon as possible. Besides, everytime I update something I'll also write it in this README, as follows. Please feel free to check that!
 
-Fnally, this repository is under the MIT License. Hope you like it. Have fun!
+Finally, this repository is under the MIT License. Hope you like it. Have fun!
 
 
 
