@@ -1,0 +1,91 @@
+
+--------------------------------------------------------------------------
+WebCrawler for Tieba
+--------------------------------------------------------------------------
+
+Created: 2016/3/2
+
+Author: ZephyrD
+
+Environment: Windows 10
+
+Coding: utf-8
+
+Latest Update: 2016/3/2
+
+
+--------------------------------------------------------------------------
+[使用说明]
+--------------------------------------------------------------------------
+
+代码详述：
+
+-------------
+
+# 首先请下载并安装相应的包，并在导言区：
+import urllib.request as request
+import re
+import urllib.error as error
+
+# 先定义一个用来爬图片的程序，输入变量有（链接，开始爬的页码，结束爬的页码）：
+def baidu_tieba(url, begin_page, end_page):
+
+# 程序中：
+    count = 1  #用来进行图片计数
+    for i in range(begin_page, end_page):
+        m = request.urlopen(url+str(i)).read()  #因为页码在链接最后，所以可以直接添加
+        page_data = m.decode('utf-8')  # Windows下的编码操作
+        page_image = re.compile('<img class="BDE_Image" src=\"(.+?)\"')  #这是百度贴吧里图片的正则，可在网页源代码中找到，也可以修改为其他的来爬
+        for image in page_image.findall(page_data):
+            pattern = re.compile(r'^http://.*.jpg$')  #找到图片链接
+            if  pattern.match(image):
+                try:
+                    image_data = request.urlopen(image).read()
+                    image_path = dirpath + '/' + str(count) + '.jpg'  #这里的路径是程序运行前输入的
+                    count += 1
+                    print(image_path)
+                    with open(image_path, 'wb') as image_file:
+                        image_file.write(image_data)  #存起来
+                    image_file.close()
+                except error.URLError as e:
+                    print('Download failed')  #如果下载失败则打印失败
+
+# 输入数据
+dirpath = 'YOUR PATH'  #在这里写文件保存目录
+url = "http://tieba.baidu.com/p/xxxxxxxx?pn="  #这里填写帖子的地址，用一串数字替换xxxxx
+begin_page = 1
+end_page = 2
+
+# 运行
+baidu_tieba(url, begin_page, end_page)
+
+# 然后就可以坐等收图了
+
+-------------
+
+备注：
+
+开发环境为Anaconda 3, Python 3.5，Win 10
+
+为了避免不必要的麻烦，程序中的备注都没有中文，若有需要可以直接复制上方短分割线内的备注代码
+
+此代码直接运行即可下载贴吧图片，适合扩展对不需要登录、不反对爬虫的网站下载你任何想要的数据（只要你自己写正则）
+
+所有能爬的东西，来源都是在网页源代码里能够找到的信息，在源代码里找到后自己编写正则，替换掉图片部分即可成为一个普世的单线程小爬虫
+
+要是源代码中没有或者隐藏在java了那就不是这个小程序能爬的了，请看其他程序
+
+以后包里还会有很多其他别的爬虫程序，我会尽量按照流行的目标网站来写，以便大家能够即下即用，如果包中未包含想爬的网站，可以选择与自己想爬网站最类似的网站，对代码进行修改
+
+关于程序更新，我会在开发新功能时考虑究竟是更新一个现有的程序还是引入一个新的程序，这些信息都会写在README的总更新描述中，在这里就不再重复，会直接进行修改并在最上方留下更新日期
+
+
+
+
+
+
+
+
+
+
+
