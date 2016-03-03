@@ -1,0 +1,140 @@
+
+--------------------------------------------------------------------------
+WebCrawler for Weibo
+--------------------------------------------------------------------------
+
+Created: 2016/3/3
+
+Author: ZephyrD
+
+Environment: Windows 10
+
+Coding: utf-8
+
+Latest Update: 2016/3/3
+
+
+--------------------------------------------------------------------------
+[使用说明]
+--------------------------------------------------------------------------
+
+代码详述：
+
+-------------
+
+# 首先请下载并安装相应的包，并在导言区：
+
+from bs4 import BeautifulSoup
+import requests
+from lxml import etree
+import urllib.request as request
+import re
+import os
+
+# 在此处输入一些信息
+user_id = (int)('xxxxxxxxx')  # 'xxxxx' 是你要爬的人的微博ID，这里主要是为了方便以后实现自动化，ID可以在账户信息中找到或者直接看那个人主页的网址里有
+cookie = {
+   "Cookie": "xxxxxxxxxxxxxxxxxxxxxxxxxxx"  # 这里输入你的Cookie
+'''
+这是微博爬虫最重要的一步，因为微博想看都要你登录，所以我们首先要有一个自己的微博账号，然后用自己的账号登录微博，获取直接进入你要爬的人的微博页面要用的Cookie
+操作方法其实还是挺多的，这里推荐一个简单易用的方法：使用Chrome，Ctrl+Shift+I打开开发者工具，选择Network页面，勾选preserve log，然后在该页面进入你要爬的人的微博页面
+要是直接登录进去了，那在列表里就会出现很多东西，选择你登录网址的那一栏，里面就有你所用的Cookie
+Cookie信息非常有用，请注意保密
+'''
+}
+headers = {
+   'User-Agent' : 'xxxxxxxxxxxxxxxxxxx'  # 伪装成浏览器，这个也可以在开发者选项里找到，就在Cookie附近
+}
+save_path = "xxxxxxxxxx" + str(user_id)  # 保存路径
+if os.path.exists(save_path) is False:  # 要是没有就创立一个路径
+    os.mkdir(save_path)
+
+# 准备工作
+urlog = 'http://weibo.cn/u/' + str(user_id) + '?filter=1' # 生成要爬的主网址，？filter是指原创微博，删去就是全部微博
+                                                          # 这里需要注意的一点是，有些用户的微博地址可能中没有/u/，请区分情况
+html = requests.get(urlog, cookies = cookie).content
+selector = etree.HTML(html)
+pageNum = (int)(selector.xpath('//input[@name="mp"]')[0].attrib['value'])
+result = "" 
+urllist_set = set()
+word_count = 1
+image_count = 1
+print(u'Web Crawler standing by.')
+
+# 获取有用的信息
+for page in range(1,pageNum+1):
+  url = urlog + '&page=' + str(page)  # get html
+  lxml = requests.get(url, cookies = cookie).content
+  # 获取文本
+  selector = etree.HTML(lxml)
+  content = selector.xpath('//span[@class="ctt"]')
+  for each in content:
+    text = each.xpath('string(.)')
+    if word_count>=4:
+      text = "%d :"%(word_count-3) +text+"\n\n"
+    else :
+      text = text+"\n\n"
+    result = result + text
+    word_count += 1
+  # 获取图片链接
+  soup = BeautifulSoup(lxml, "lxml")
+  urllist = soup.find_all('a',href=re.compile(r'^http://weibo.cn/mblog/oripic',re.I))
+  first = 0
+  for imgurl in urllist:
+    urllist_set.add(requests.get(imgurl['href'], cookies = cookie).url)
+    image_count +=1
+print(u'User\'s data captured.')
+
+# 保存文本
+with open(save_path + "/text.txt",'wb') as fo:
+    fo.write(result.encode())
+fo.close()
+print( u'Text saved, %d original weibo, at %s'%(word_count-4,save_path))
+
+# 保存图片
+if not urllist_set:
+  print(u'NO IMAGE')
+else:
+  # 下载图片
+  x=1
+  for imgurl in urllist_set:
+    temp= save_path + '/%s.jpg' % x
+    print( u'Downloading image No. %s' % x)
+    try:
+      image_data = request.urlopen(imgurl).read()
+      with open(temp, 'wb') as image_file:
+           image_file.write(image_data)
+      image_file.close()
+    except:
+      print( u"Download failed %s"%imgurl)
+    x+=1    # 坐等收图
+print( u'%d images saved, at %s'%(image_count-1,save_path))
+
+-------------
+
+备注：
+
+开发环境为Anaconda 3, Python 3.5，Win 10
+
+为了避免不必要的麻烦，程序中的备注都没有中文，若有需要可以直接复制上方短分割线内的备注代码
+
+此代码直接运行即可下载微博内容（文字）和图片，适合扩展对需要登录但可以使用Cookie自动登录、不反对爬虫的网站下载你任何想要的数据（只要你自己写正则）
+
+所有能爬的东西，来源都是在网页源代码里能够找到的信息，在源代码里找到后自己编写正则，替换掉文字或图片部分即可成为一个普世的单线程小爬虫
+
+要是源代码中没有或者隐藏在java了那就不是这个小程序能爬的了，请看其他程序
+
+以后包里还会有很多其他别的爬虫程序，我会尽量按照流行的目标网站来写，以便大家能够即下即用，如果包中未包含想爬的网站，可以选择与自己想爬网站最类似（登录方式等）的网站，对代码进行修改
+
+关于程序更新，我会在开发新功能时考虑究竟是更新一个现有的程序还是引入一个新的程序，这些信息都会写在README的总更新描述中，在这里就不再重复，会直接进行修改并在最上方留下更新日期
+
+
+
+
+
+
+
+
+
+
+
