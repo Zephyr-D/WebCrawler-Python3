@@ -9,7 +9,7 @@ By Zephyr-D
 
 Created: 2016/2/28
 
-Latest Update: 2016/3/1
+Latest Update: 2016/3/3
 
 
 
@@ -58,6 +58,15 @@ INSTRUCTION: A fresh, new and official README is now standing by! WC_Tieba.py is
 
 ---------------------------------------------------------
 
+VERSION: 1.1
+
+DATE: 2016/3/3
+
+DOCUMENT: README, WC_Weibo.py, WC_Weibo_Info.txt
+
+INSTRUCTION: WC_Weibo.py can enable you to download one's Weibo text into a '.txt' and one's '.jpg' images (from the first page to the last page). This program is a little more complex than the former one (WC_Tieba.py), as it can automatically use Cookie to log into the website (these websites require your login to get access to the information). WC_Weibo_Info.txt is its supporting document to give a detailed explanation to its information and usage. Now it is also only in Chinese but I've given all necessary (in my opinion) notes in every '.py' file and I think that could help. What's more, I love Chinese. Have fun!
+
+---------------------------------------------------------
 
 
 
